@@ -16,5 +16,8 @@ PATCH http://localhost:3000/reports/1
 Content-Type: application/json
 
 {
-	"approved": true
+	"approved": false
 }
+
+### Get estimate
+GET http://localhost:3000/reports?make=toyota&model=corolla&lat=0&lng=0&mileage=20000&year=1980 HTTP/1.1
