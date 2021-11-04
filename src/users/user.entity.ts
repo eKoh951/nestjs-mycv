@@ -21,6 +21,9 @@ export class User {
   @Column()
   password: string;
 
+  @Column({ default: true })
+  admin: boolean;
+
   // () => Report is because of Circular Dependency
   // (report) => report.user is to add user to report (report.user)
   // can also be report.approver, report.owner
