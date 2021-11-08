@@ -24,9 +24,9 @@ export class AuthService {
 
     const hash = (await scrypt(password, salt, 32)) as Buffer;
 
-    const result = salt + '.' + hash.toString('hex');
+    const securedPassword = salt + '.' + hash.toString('hex');
 
-    const user = await this.usersService.create(email, result);
+    const user = await this.usersService.create(email, securedPassword);
 
     return user;
   }
@@ -43,7 +43,7 @@ export class AuthService {
     const hash = (await scrypt(password, salt, 32)) as Buffer;
 
     if (hash.toString('hex') !== storedHash) {
-      throw new BadRequestException('Wrong password');
+      throw new BadRequestException('Bad credentials');
     }
 
     return user;
